@@ -3,20 +3,16 @@ import base64
 import shutil
 import json
 import urllib.parse
-from IPython.display import html, display
 from hda_api_functions import *
 
 import requests, warnings
 warnings.filterwarnings('ignore')
 
-##dataset_id = "EO:EUM:DAT:SENTINEL-3:OL_1_EFR___"
 dataset_id = "EO:ECMWF:DAT:CAMS_GREENHOUSE_GAS_FLUXES"
 
-username: 'mattaqi'
-password: 'masma3991'
+username = 'mattaqi'
+password = 'masma3991'
 api_key = generate_api_key(username, password)
-display(HTML('Your API KEY IS: <b>'+ api_key+ '</b>'))
-
 download_dir_path = os.getcwd()
 
 hda_dict = init(dataset_id, api_key, download_dir_path)
@@ -78,6 +74,9 @@ data = {
 }
 
 hda_dict = get_job_id(hda_dict, data)
+
 hda_dict = get_results_list(hda_dict)
+
 hda_dict = get_order_ids(hda_dict)
+
 hda_dict = download_data(hda_dict, file_extension='.zip')
