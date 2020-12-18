@@ -17,6 +17,8 @@ download_dir_path = os.getcwd()
 
 # Initialisation
 hda_dict = init(dataset_id, api_key, download_dir_path)
+
+# Access token
 hda_dict = get_access_token(hda_dict)
 hda_dict = acceptTandC(hda_dict)
 
