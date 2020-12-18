@@ -15,6 +15,7 @@ password = 'masma3991'
 api_key = generate_api_key(username, password)
 download_dir_path = os.getcwd()
 
+# Initialisation
 hda_dict = init(dataset_id, api_key, download_dir_path)
 hda_dict = get_access_token(hda_dict)
 hda_dict = acceptTandC(hda_dict)
