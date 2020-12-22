@@ -4,6 +4,7 @@ import shutil
 import json
 import urllib.parse
 from hda_api_functions import *
+import netcdf4 as nc
 
 import requests, warnings
 warnings.filterwarnings('ignore')
