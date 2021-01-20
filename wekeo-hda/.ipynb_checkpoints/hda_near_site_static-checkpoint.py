@@ -1,15 +1,5 @@
-import os,sys, time
-import base64
-import shutil
-import json
-import urllib.parse
-from hda_api_functions import *
 import netCDF4
 import numpy as np
-
-def intersection(lst1, lst2): 
-    lst3 = [value for value in lst1 if value in lst2] 
-    return lst3 
 
 flux_foss_str_annuel = 0
 flux_apri_bio_str_annuel = 0
@@ -28,7 +18,6 @@ for k in range(12):
         l = '0'+str(k+1)
     else:
         l = str(k+1)
-    # print('./ressources/cams73_latest_co2_flux_satellite_mm_2019'+l+'.nc')
     
     print ("----------------------date: 2019"+l+"--------------------------------------")
 

@@ -12,7 +12,8 @@ def intersection(lst1, lst2):
     return lst3 
 
 # Initialisation
-fn = './ressources/cams73_latest_co2_conc_satellite_inst_202008.nc'
+#fn = './ressources/cams73_latest_co2_conc_satellite_inst_202008.nc'
+fn = './ressources/cams73_latest_co2_flux_satellite_mm_201912.nc'
 ds = netCDF4.Dataset(fn)
 
 print(ds)

@@ -1,15 +1,5 @@
-import os,sys, time
-import base64
-import shutil
-import json
-import urllib.parse
-from hda_api_functions import *
 import netCDF4
 import numpy as np
-
-def intersection(lst1, lst2): 
-    lst3 = [value for value in lst1 if value in lst2] 
-    return lst3 
 
 flux_foss_str_annuel = 0
 flux_apri_bio_str_annuel = 0
@@ -28,7 +18,6 @@ for k in range(12):
         l = '0'+str(k+1)
     else:
         l = str(k+1)
-    # print('./ressources/cams73_latest_co2_flux_satellite_mm_2019'+l+'.nc')
     
     print ("----------------------date: 2019"+l+"--------------------------------------")
 
@@ -39,18 +28,6 @@ for k in range(12):
     long = ds['longitude'][:]
     lat = ds['latitude'][:]
     area = ds['area'][:]
-
-    '''
-    print(ds)
-    print ("------------------------------------------------------------")
-    print ("variables are: =>")
-    #for i in ds.variables:
-    #    print (i, ds.variables[i].units, ds.variables[i].shape)
-    print ("------------------------------------------------------------")
-    for i in ds.variables:
-       print (i, ds.variables[i])
-    print ("------------------------------------------------------------")
-    '''
 
     print ("----------------------port strasbourg--------------------------------------")
 
@@ -69,14 +46,6 @@ for k in range(12):
     lat_str_max = 50.21052632
     lat_str_min = 48.31578947
 
-    #index_long_min_str = np.where(long_str_min <= long)[0]
-    #index_long_max_str = np.where(long <= long_str_max)[0]
-    #index_long_str = intersection(index_long_min_str, index_long_max_str)
-
-    #index_lat_min_str = np.where(lat_str_min <= lat)[0]
-    #index_lat_max_str = np.where(lat <= lat_str_max)[0]
-    #index_lat_str = intersection(index_lat_min_str, index_lat_max_str)
-
     max_long_str = np.where(long >= long_str)[0]
     min_long_str = np.where(long <= long_str)[0]
     long_inters_str = [min_long_str[-1], max_long_str[0]]
@@ -85,13 +54,9 @@ for k in range(12):
     min_lat_str = np.where(lat <= lat_str)[0]
     lat_inters_str = [min_lat_str[-1], max_lat_str[0]]
 
-    #print(min_long)
-    #print(max_long)
     print("intersection of indexes for the longitude is: ")
     print(long_inters_str, [long[long_inters_str[0]], long[long_inters_str[1]]],  '\n')
 
-    #print(min_lat)
-    #print(max_lat)
     print("intersection of indexes for the latitude is: ")
     print(lat_inters_str, [lat[lat_inters_str[0]], lat[lat_inters_str[1]]], '\n')
 
@@ -183,13 +148,9 @@ for k in range(12):
     min_lat_kla = np.where(lat <= lat_kla)[0]
     lat_inters_kla = [min_lat_kla[-1], max_lat_kla[0]]
 
-    #print(min_long)
-    #print(max_long)
     print("intersection of indexes for the longitude is: ")
     print(long_inters_kla, [long[long_inters_kla[0]], long[long_inters_kla[1]]],  '\n')
 
-    #print(min_lat)
-    #print(max_lat)
     print("intersection of indexes for the latitude is: ")
     print(lat_inters_kla, [lat[lat_inters_kla[0]], lat[lat_inters_kla[1]]], '\n')
 
@@ -255,18 +216,4 @@ for k in range(12):
 
 
     print ("---------------------end klaipeda--------------------------------------")
-
-'''
-long_max = 10
-long_min = 0
-index_long_max = np.where(long_max <= long)[0]
-print("index_long_max")
-print(index_long_max)
-print("stat")
-print(index_long_max[0], long[index_long_max[0]])
-
-area = ds['area'][:]
-lsf = ds['lsf'][:]
-flux_foss = ds['flux_foss'][:]
-'''
 
